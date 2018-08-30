@@ -1,0 +1,39 @@
+Feature: The Redfin welcome page should have a login button
+
+	Scenario: Sign in dialog should display when I click the LogIn button 
+		Given I am on the site homepage
+		When I click "Log In" on the "home" Page
+		
+	Scenario: I am able to log in from the Username Password dialog
+		Given I am on the "Sign In" dialog
+		When I click "Continue with Email" on the "Sign In" dialog
+		Then the "SigninUsernamePassword" dialog should become visible	
+		
+	Scenario: I am able to log in when I enter a username and password into the SignInUsernamePassword dialog
+		Given I am on the "SignInUsernameePassword" dialog 
+		When I enter "peacoatgirl@hotmail.com" into the "username" field
+		And I enter "Password1" into the "password" field
+		And I click "Sign In"
+		Then I am signed in and on the main property search page
+		
+	Scenario: I am able to search for a property
+		Given I am on the main property search page 
+		And I click on the "City,Address, School, gent, Zip" field
+		And I enter "92804" in the "City,Address,School,Agent,Zip" field
+		And I click the "search" button
+		Then results display on the "92804 Real Estate" page
+		
+	Scenario: I am able to filter the property list
+		Given I am on the "92804 Real Estate" page
+		And I click on the "More Filters" link
+		And I click on the "PriceMaxValue" field
+		And I click "$400k" on the "PriceMaxValue" combobox
+		And I click on the "BedsMaxValue" field
+		And I click "3" in the "BedsMaxValue" combobox
+		And I click  "BathsPlus" on the "BathsCount" control
+		And I click  "Bathpslus" on the "BathsCount" control
+		And I click  "Bathpslus" on the "BathsCount" control
+		And I click  "Bathpslus" on the "BathsCount" control
+		And I click  "Bathpslus" on the "BathsCount" control
+		And I click  "Apply Filters"
+		Then I am on the "Showing x Homes" page
